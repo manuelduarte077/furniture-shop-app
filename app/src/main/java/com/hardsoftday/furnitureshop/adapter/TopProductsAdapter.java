@@ -1,6 +1,10 @@
 package com.hardsoftday.furnitureshop.adapter;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hardsoftday.furnitureshop.DetaillsProductActivity;
 import com.hardsoftday.furnitureshop.R;
 import com.hardsoftday.furnitureshop.models.TopProducts;
 
@@ -39,6 +44,18 @@ public class TopProductsAdapter extends RecyclerView.Adapter<TopProductsAdapter.
         holder.productName.setText(topProductsList.get(position).getProductsName());
         holder.productPrice.setText(topProductsList.get(position).getProductsPrice());
         holder.productImage.setImageResource(topProductsList.get(position).getImageUrl());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, DetaillsProductActivity.class);
+
+                Pair[] pairs = new Pair[1];
+                pairs[0] = new Pair<View, String>(holder.productImage, "image");
+                ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
+                context.startActivity(i, activityOptions.toBundle());
+            }
+        });
 
     }
 
