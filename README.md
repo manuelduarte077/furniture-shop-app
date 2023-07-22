@@ -1,3 +1,6 @@
 ### Furniture shop mobile app ui
 
-<img src="docs/img.png" alt="" width="450" height="250"/>
+
+### ToDO List APP
+<img src="docs/img.jpg" />
+
